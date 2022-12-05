@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { useState, useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { useAsyncStorage } from '@react-native-async-storage/async-storage';
 import HomeScreen from "./screens/HomeScreen";
 import CreateExpenseScreen from "./screens/CreateExpenseScreen";
 import ExpenseDetailsScreen from "./screens/ExpenseDetailsScreen";
@@ -16,6 +17,33 @@ export default function App() {
     { id: 1, title: 'Shoppers', price: 300.0 },
     { id: 2, title: 'Stapes', price: 250.0 }
   ])
+
+  const { getItem, setItem } = useAsyncStorage('ExpenseApp');
+
+  const readItemFromStorage = () => {
+    getItem().then((item) => {
+      // Getting item value and save it
+      item = item === null ? [] : JSON.parse(item)
+      setExpenses(item)
+    }).catch(console.log);
+  };
+
+  const addExpense = (item) => {
+    setExpenses([...expenses, item])
+    setItem(JSON.stringify([...expenses, item])).then(() => {
+      console.log('new value is saved in array');
+      console.log(expenses);
+    }).catch(console.log);
+    // Item in AsyncStorage is a String representation of the array
+  }
+
+  const deleteExpense = (id) => {
+    let filteredExpense = expenses.filter((item) => item.id !== id);
+    setExpenses(filteredExpense);
+    setItem(JSON.stringify(filteredExpense));
+  }
+
+  useEffect(() => { readItemFromStorage() }, []);
 
   return (
     <NavigationContainer>
