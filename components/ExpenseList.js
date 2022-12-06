@@ -1,5 +1,6 @@
 import React from 'react';
 import { SafeAreaView, FlatList, StyleSheet } from 'react-native';
+import ExpenseItem from './ExpenseItem';
 
 export default function ExpenseList(props){
     return(
