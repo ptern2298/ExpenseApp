@@ -18,7 +18,7 @@ export default function ExpenseItem(props) {
                 <Text style={styles.itemMoney}>${props.price}</Text>
                 <Text style={styles.itemTitle}>${props.title}</Text>
             </Pressable>
-            <Pressable onPress={}>
+            <Pressable onPress={() => {props.deleteExpense(id)}}>
                 <Text style={styles.itemDelete}>Delete</Text>
             </Pressable>
         </View>

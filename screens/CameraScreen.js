@@ -31,7 +31,7 @@ export default function CameraScreen({ route, navigation}) {
         };
         camera.takePictureAsync(options).then(({ uri, width, height, exif, base64}) => {
             route.params.setCameraImage(uri)
-            navigation.navigate('CreateExpense')
+            navigation.navigate('Create Expense')
         });
     };
 

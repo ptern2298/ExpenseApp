@@ -49,16 +49,16 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator initialRouteName='Home'>
         <Stack.Screen name='Home'>
-          <HomeScreen/>
+          {(props) => <HomeScreen {...props} expenses = {expenses} deleteExpense = {deleteExpense}/>}
         </Stack.Screen>
         <Stack.Screen name='Camera'>
-          <CameraScreen/>
+          {(props) => <CameraScreen {...props} />}
         </Stack.Screen>
         <Stack.Screen name='CreateExpense'>
-          <CreateExpenseScreen/>
+          {(props) => <CreateExpenseScreen {...props} addExpense = {addExpense}  expenses = {expenses} />}
         </Stack.Screen>
         <Stack.Screen name='ExpenseDetails'>
-          <ExpenseDetailsScreen/>
+          {(props) => <ExpenseDetailsScreen {...props} expenses = {expenses}/>}
         </Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>

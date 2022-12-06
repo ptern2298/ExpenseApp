@@ -17,7 +17,6 @@ export default function HomeScreen({ navigation, route, expenses, deleteExpense 
 
     return(
         <SafeAreaView>
-            <ActivityIndicator animating={loading} size='large' style={}/>
             {loading ? (
                     <ActivityIndicator
                         animating={loading}
@@ -36,7 +35,7 @@ export default function HomeScreen({ navigation, route, expenses, deleteExpense 
                             <Text style={styles.noExpenses}>No Expenses Yet! </Text>
                         )
                         }
-                        <Button title="Create expense" onPress = {() => { navigation.navigate('CreateExpense') }} />
+                        <Button title="Create Expense" onPress = {() => { navigation.navigate('CreateExpense') }} />
                     </>
                 )}
             <StatusBar style="auto"/>
