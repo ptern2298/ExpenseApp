@@ -66,7 +66,7 @@ export default function CreateExpenseScreen({ route, navigation, addExpense}) {
                                value={price}
                                placeholder='Enter expense title'
                     />
-                    { image && (<Image style={styles.imageView} source={{uri: image}} /> ) }
+                    { image && (<Image style={styles.imageView} source={{uri: image}} />) }
                 </View>
                 <View style={styles.buttonContainer}>
                     <Button title={'Submit Expense'} onPress={ () => { onSubmit() }} />
